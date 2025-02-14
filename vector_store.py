@@ -1,6 +1,8 @@
 import chromadb
 from sentence_transformers import SentenceTransformer
-
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 # Initialize ChromaDB client and collection
 client = chromadb.Client()
 collection_name = "knowledge_base"
