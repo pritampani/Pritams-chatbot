@@ -1,3 +1,5 @@
+streamlit
+pysqlite3-binary
 altair
 altgraph
 annotated-types
@@ -115,7 +117,6 @@ soupsieve
 SpeechRecognition
 sqlparse
 starlette
-streamlit
 sympy
 tenacity
 tokenizers
@@ -136,5 +137,3 @@ websockets
 Werkzeug
 wrapt
 zipp
-streamlit
-pysqlite3
