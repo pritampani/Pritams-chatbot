@@ -1,8 +1,8 @@
-__import__('pysqlite3')
-import sys
-
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import os
+os.environ["LD_LIBRARY_PATH"] = os.environ.get("LD_LIBRARY_PATH", "") + ":/usr/lib"
+import pysqlite3  # Force using correct SQLite
+import sys
+sys.modules["sqlite3"] = pysqlite3
 import uuid
 from PyPDF2 import PdfReader
 import chromadb
