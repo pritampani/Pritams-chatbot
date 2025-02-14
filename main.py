@@ -3,7 +3,6 @@ os.environ["LD_LIBRARY_PATH"] = os.environ.get("LD_LIBRARY_PATH", "") + ":/usr/l
 import pysqlite3  # Force using correct SQLite
 import sys
 sys.modules["sqlite3"] = pysqlite3
-
 import streamlit as st
 import chromadb
 import google.generativeai as genai
@@ -20,7 +19,7 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-
+value=st.secrets["value"]
 genai.configure(api_key=value)
 
 generation_config = {
