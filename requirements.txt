@@ -1,3 +1,4 @@
+sentence-transformers
 streamlit
 pysqlite3-binary
 altair
