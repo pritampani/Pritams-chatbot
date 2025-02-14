@@ -1,8 +1,13 @@
+import os
+os.environ["LD_LIBRARY_PATH"] = os.environ.get("LD_LIBRARY_PATH", "") + ":/usr/lib"
+import pysqlite3  # Force using correct SQLite
+import sys
+sys.modules["sqlite3"] = pysqlite3
+
 import streamlit as st
 import chromadb
 import google.generativeai as genai
 import json
-import os
 import logging
 from vector_store import retrieve_context
 from pdf_processing import update_knowledge_base
