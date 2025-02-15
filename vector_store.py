@@ -1,13 +1,12 @@
-
-import os
-os.environ["LD_LIBRARY_PATH"] = os.environ.get("LD_LIBRARY_PATH", "") + ":/usr/lib"
-import pysqlite3  # Force using correct SQLite
+__import__('pysqlite3')
 import sys
-sys.modules["sqlite3"] = pysqlite3
+
+
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import chromadb
 from sentence_transformers import SentenceTransformer
 
-# Initialize ChromaDB client and collection
+# Use PersistentClient instead of in-memory client
 client = chromadb.PersistentClient(path="./chroma_db")
 
 # Ensure the collection exists before using it
@@ -37,12 +36,6 @@ def retrieve_context(query):
     try:
         # Generate query embedding
         query_embedding = generate_query_embedding(query)
-        
-        # ✅ Ensure collection exists
-        collections = client.list_collections()
-        if collection_name not in [col.name for col in collections]:
-            print(f"Collection '{collection_name}' does not exist.")
-            return "No relevant context found."
 
         if query_embedding is not None:
             # Query ChromaDB using the embedding
