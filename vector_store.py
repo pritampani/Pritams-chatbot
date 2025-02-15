@@ -30,6 +30,12 @@ def retrieve_context(query):
     try:
         # Generate query embedding
         query_embedding = generate_query_embedding(query)
+        
+        # ✅ Ensure collection exists
+        collections = client.list_collections()
+        if collection_name not in [col.name for col in collections]:
+            print(f"Collection '{collection_name}' does not exist.")
+            return "No relevant context found."
 
         if query_embedding is not None:
             # Query ChromaDB using the embedding
