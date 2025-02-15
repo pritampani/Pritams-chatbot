@@ -10,9 +10,16 @@ import chromadb
 from sentence_transformers import SentenceTransformer
 
 # Initialize ChromaDB client and collection
-client = chromadb.PersistentClient(path="chroma_db")
+client = chromadb.PersistentClient(path="./chroma_db")
+
+# Ensure the collection exists before using it
 collection_name = "knowledge_base"
-collection = client.get_or_create_collection(name=collection_name)
+
+try:
+    collection = client.get_collection(name=collection_name)
+except:
+    print("Collection not found. Creating a new one...")
+    collection = client.create_collection(name=collection_name)
 
 # Initialize the embedding model from sentence-transformers (all-MiniLM-L6-v2)
 embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
