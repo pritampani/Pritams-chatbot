@@ -10,7 +10,7 @@ import chromadb
 from sentence_transformers import SentenceTransformer
 
 # Initialize ChromaDB client and collection
-client = chromadb.Client()
+client = chromadb.PersistentClient(path="chroma_db")
 collection_name = "knowledge_base"
 collection = client.get_or_create_collection(name=collection_name)
 
