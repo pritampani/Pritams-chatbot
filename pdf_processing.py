@@ -1,15 +1,15 @@
-
-import os
-os.environ["LD_LIBRARY_PATH"] = os.environ.get("LD_LIBRARY_PATH", "") + ":/usr/lib"
-import pysqlite3  # Force using correct SQLite
+__import__('pysqlite3')
 import sys
-sys.modules["sqlite3"] = pysqlite3
+
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+import os
 import uuid
-from PyPDF2 import PdfReader
+from PyPDF2 import PdfReaderx
 import chromadb
 from sentence_transformers import SentenceTransformer
+import chromadb
 
-# Initialize ChromaDB client and collection
+# Use PersistentClient instead of in-memory client
 client = chromadb.PersistentClient(path="./chroma_db")
 
 # Ensure the collection exists before using it
@@ -20,6 +20,7 @@ try:
 except:
     print("Collection not found. Creating a new one...")
     collection = client.create_collection(name=collection_name)
+
 
 # Initialize the embedding model from sentence-transformers (all-MiniLM-L6-v2)
 embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
