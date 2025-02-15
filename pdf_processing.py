@@ -4,7 +4,7 @@ import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import os
 import uuid
-from PyPDF2 import PdfReaderx
+from PyPDF2 import PdfReader
 import chromadb
 from sentence_transformers import SentenceTransformer
 import chromadb
