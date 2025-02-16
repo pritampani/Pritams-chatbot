@@ -6,8 +6,7 @@ import os
 import logging
 from vector_store import retrieve_context
 from pdf_processing import update_knowledge_base
-value=st.secrets["value"]
-genai.configure(api_key=value)
+value = "AIzaSyAKHJmdAjCjVz38niGb3gSV91WcNmU5V1s"
 
 # Configure logging
 logging.basicConfig(
@@ -131,4 +130,3 @@ if query:
     
     conversation = {"User": query, "Luna": response}
     save_conversation(conversation)
-
