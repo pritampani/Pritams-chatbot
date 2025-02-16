@@ -57,3 +57,4 @@ def retrieve_context(query):
     except Exception as e:
         print(f"Error retrieving context: {e}")
         return "Error occurred while retrieving context."
+
