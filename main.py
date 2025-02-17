@@ -73,7 +73,7 @@ def chat(query):
     if context:
         full_query = f"Context: {context}\nQuery: {query}"
     else:
-        full_query = f"Query: {query}. I don't have specific context for this query."
+        full_query = f"Query: {query}. I am a personalized chatbot, so please ask only about the data provided by my owner."
 
     for attempt in range(3):  # Retry up to 3 times
         try:
