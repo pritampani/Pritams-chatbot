@@ -1,6 +1,6 @@
 sentence-transformers
 streamlit
-pysqlite3
+pysqlite3-binary
 altair
 altgraph
 annotated-types
