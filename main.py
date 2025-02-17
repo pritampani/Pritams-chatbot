@@ -12,7 +12,7 @@ import os
 import logging
 from vector_store import retrieve_context
 from pdf_processing import update_knowledge_base
-value = "AIzaSyAKHJmdAjCjVz38niGb3gSV91WcNmU5V1s"
+value=st.secrets["value"]
 
 # Configure logging
 logging.basicConfig(
